@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stealthgyro/discord-embeds.git"
+    "url": "git+https://github.com/stealthgyro/tilted-embeds.git"
   },
   "keywords": [
     "discord",
@@ -40,7 +40,7 @@
   "author": "gyro <stealthgyro@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stealthgyro/discord-twitter-video-embeds/issues"
+    "url": "https://github.com/stealthgyro/tilted-embeds/issues"
   },
-  "homepage": "https://github.com/stealthgyro/discord-twitter-video-embeds#readme"
+  "homepage": "https://github.com/stealthgyro/tilted-embeds#readme"
 }
