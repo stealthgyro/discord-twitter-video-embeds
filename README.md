@@ -13,7 +13,7 @@ Twitter Embeds fixes video embeds from Twitter, TikTok and Reddit on Discord wit
 ### Special Thanks
 
 - **[Brecert](https://github.com/Brecert)**: Twitter Client Implementation.
-- **[Youtube DL](https://github.com/ytdl-org/youtube-dl)**: Reference for Instagram, Reddit, Tiktok and Twitter Clients.
+- **[Youtube DL](https://github.com/ytdl-org/youtube-dl)**: Reference for Instagram, Reddit, Tiktok, and Twitter Clients.
 - **[general-programming](https://generalprogramming.org/)**: Allowing me to use proxy.knotty.dev as a fallback for oversized reddit videos.
 - **BLOCKLETTER Discord**: Initially pushing me to make this
 - **[Cynthia](https://c7.pm/)**: Implementing seperate upload limits for boosted servers. Various other small features/improvements.
