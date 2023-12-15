@@ -18,7 +18,7 @@
     "utf-8-validate": "^5.0.5",
     "uuid": "^8.3.2"
   },
-  "name": "discord-twitter-video-embeds",
+  "name": "tilted-embeds",
   "description": "Fixes video embeds in Discord for Twitter, TikTok and Reddit",
   "version": "2.0.0",
   "main": "src/index.js",
@@ -27,18 +27,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adryd325/discord-embeds.git"
+    "url": "git+https://github.com/stealthgyro/discord-embeds.git"
   },
   "keywords": [
     "discord",
     "twitter",
     "reddit",
-    "tiktok"
+    "tiktok",
+    "instagram"
   ],
-  "author": "adryd <me@adryd.com>",
+  "author": "gyro <stealthgyro@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/adryd325/discord-twitter-video-embeds/issues"
+    "url": "https://github.com/stealthgyro/discord-twitter-video-embeds/issues"
   },
-  "homepage": "https://github.com/adryd325/discord-twitter-video-embeds#readme"
+  "homepage": "https://github.com/stealthgyro/discord-twitter-video-embeds#readme"
 }

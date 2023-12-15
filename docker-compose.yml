@@ -1,9 +1,14 @@
 services:
-  bot:
+  tilted-embed:
     build:
       context: .
       dockerfile: Dockerfile
-    image: discord-twitter-video-embeds
-    restart: unless-stopped
+    image: tilted-embed
+    container_name: tilted-embed
+    hostname: tilted-embed
+    # restart: unless-stopped
     env_file:
       - .env
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+     - ./data:/bot/data

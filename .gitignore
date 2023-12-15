@@ -1,3 +1,6 @@
 node_modules
 data
+ignore
 .env
+.vscode
+.cheatsheet.sh
