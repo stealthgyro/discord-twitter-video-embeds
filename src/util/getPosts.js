@@ -26,6 +26,8 @@ async function getPost(mdMatch, options, spoiler) {
       log.verbose("getPosts", `Matched tmpProvider:${tmpProvider} and tmpMatch:${tmpMatch} with regex:${regex}`)
       provider = tmpProvider;
       match = tmpMatch;
+    }else{
+      log.verbose("getPosts", `Did not match for for url: ${url.href} with regex:${regex}`);
     }
   }
 

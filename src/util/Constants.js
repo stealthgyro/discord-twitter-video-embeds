@@ -53,7 +53,7 @@ module.exports.Providers = keyMirror([
 ]);
 
 module.exports.URLRegexes = {
-  INSTAGRAM: /https?:\/\/(?:www\.)?instagram\.com\/(?:p|tv|reel)\/[^/?#&]+/,
+  INSTAGRAM: /https?:\/\/(?:www\.)?(instagram|facebook)\.com\/(?:p|tv|reels|reel)\/[^/?#&]+/,
   REDDIT: /https?:\/\/(?:[^/]+\.)?reddit\.com(\/r\/[^/]+\/comments\/([^/?#&]+))/,
   REDDIT_VIDEO: /https?:\/\/v\.redd\.it\/([^/?#&]+)/,
   TIKTOK: /https?:\/\/(?:www\.)?tiktok\.com\/@[0-9a-zA-Z._]+\/video\/(\d+)/,

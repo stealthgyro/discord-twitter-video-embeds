@@ -11,6 +11,7 @@
     "@bochilteam/scraper": "^4.2.4",
     "bufferutil": "^4.0.3",
     "discord.js": "^14.12.1",
+    "fbdl-core": "^1.0.2",
     "node-fetch": "^2.6.1",
     "sequelize": "^6.6.5",
     "sequelize-simple-cache": "^1.3.0",

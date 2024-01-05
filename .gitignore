@@ -5,3 +5,4 @@ binaries
 .env
 .vscode
 .cheatsheet.sh
+docker-compose.yml

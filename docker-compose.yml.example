@@ -1,12 +1,12 @@
 services:
-  dev-tilted-embed:
+  tilted-embed:
     build:
       context: .
       dockerfile: Dockerfile
-    image: dev-tilted-embed
-    container_name: dev-tilted-embed
-    hostname: dev-tilted-embed
-    # restart: unless-stopped
+    image: tilted-embed
+    container_name: tilted-embed
+    hostname: tilted-embed
+    restart: unless-stopped
     env_file:
       - .env
     volumes:

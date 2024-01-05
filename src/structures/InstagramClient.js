@@ -5,11 +5,26 @@ const { snapsave } = require('@bochilteam/scraper');
 
 class InstagramClient {
   async getPost(match) {
-    const url = match[0];
-    log.verbose("InstagramClient", `Got url: ${url}`);
+    var urlMatch = match[0];
+    log.verbose("InstagramClient", `Got urlMatch: ${urlMatch}`);
     // This should be safe as our regexes earlier prevent any weirdness
     try {
-      return await sh(`yt-dlp --cookies data/cookies.txt '${url.replace(/'/g, "'\\''")}' -j`).then((stdout) => {
+      if(urlMatch.includes("/reels/")){
+        urlMatch = urlMatch.replace('/reels/', '/p/');
+      }
+      if(urlMatch.includes("/reel/")){
+        urlMatch = urlMatch.replace('/reel/', '/p/');
+      }
+      if(urlMatch.includes("/tv/")){
+        urlMatch = urlMatch.replace('/tv/', '/p/');
+      }
+      const url = urlMatch;
+      var shellCommand = `yt-dlp --cookies data/cookies.txt '${url.replace(/'/g, "'\\''")}' -j`;
+      if(urlMatch.includes("facebook.com")){
+        shellCommand = `yt-dlp '${url.replace(/'/g, "'\\''")}' -j`;
+      }
+      log.verbose("InstagramClient", `Got url: ${url}`);
+      return await sh(shellCommand).then((stdout) => {
         log.verbose("InstagramClient", `Got stdout: ${stdout}`);
         return new InstagramPost(JSON.parse(stdout));
       });
