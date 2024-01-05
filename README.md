@@ -1,4 +1,8 @@
-# Discord External Video Embeds
+# Tilted-embeds
+Added Instagram support via yt-dlp binary and cookies from cookies.txt extension (Firefox, cookie container limited to just the accounts I want in there, and make it look like more of a real person, use the account occasionally)...
+Facebook without cookies added within the instagram client and regex, just if it can download it without an account it will using yt-dlp. Some other minor fixes, I need to update this readme more, but this is only in a few servers.
+
+I also want to maybe add something with song.link, like if someone shares spotify/itunes/tidal/music.youtube links auto reply with a song.link so everyone can find their song easier on their preferred platform.
 
 **NOW WORKS WITH TEXT AND IMAGE TWITTER POSTS**
 
