@@ -4,6 +4,8 @@ Facebook without cookies added within the instagram client and regex, just if it
 
 I also want to maybe add something with song.link, like if someone shares spotify/itunes/tidal/music.youtube links auto reply with a song.link so everyone can find their song easier on their preferred platform.
 
+I want to add reddit image posts like twitter as well.
+
 **NOW WORKS WITH TEXT AND IMAGE TWITTER POSTS**
 
 I'm a Discord bot that fixes your broken Twitter, TikTok and Reddit videos. You can find a list of public instances here: https://adryd.co/twitter-embeds.
