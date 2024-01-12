@@ -6,6 +6,8 @@ I also want to maybe add something with song.link, like if someone shares spotif
 
 I want to add reddit image posts like twitter as well.
 
+Added quote retweet support, 1 level.
+
 **NOW WORKS WITH TEXT AND IMAGE TWITTER POSTS**
 
 I'm a Discord bot that fixes your broken Twitter, TikTok and Reddit videos. You can find a list of public instances here: https://adryd.co/twitter-embeds.
@@ -23,10 +25,11 @@ Twitter Embeds fixes video embeds from Twitter, TikTok and Reddit on Discord wit
 - **[general-programming](https://generalprogramming.org/)**: Allowing me to use proxy.knotty.dev as a fallback for oversized reddit videos.
 - **BLOCKLETTER Discord**: Initially pushing me to make this
 - **[Cynthia](https://c7.pm/)**: Implementing seperate upload limits for boosted servers. Various other small features/improvements.
+- **[BochilTeam/Scraper](https://github.com/BochilTeam/scraper)**: Assist for Instagram/Reels
 
 ## Usage
 
-You can use the bot by [adding it to your Discord server](https://adryd.co/twitter-embeds), or sending it a direct message. It has 3 different modes that can be changed by a server administrator (Manage Server permission).
+You can use the bot by [adding it to your Discord server](https://discord.com/api/oauth2/authorize?client_id=1166812133112160276&permissions=275414837248&scope=bot), or sending it a direct message. It has 3 different modes that can be changed by a server administrator (Manage Server permission).
 
 - The video reply mode will reply with a file or direct link to a video.
 
@@ -121,13 +124,14 @@ You're free to request deletion of data associated with your user or a server yo
 
 If for any reason you need to contact me, I'm available through the following channels
 
-- Discord: [adryd#6880](https://discord.com/users/298475055141355520); State why you added me after sending a friend request
-- Email: [me@adryd.com](mailto:me@adryd.com); Please include Twitter Embeds in the subject line
+- Discord: [Stealthgyro](https://discord.com/users/178254080383254528); State why you added me after sending a friend request
+- Email: [stealthgyro@gmail.com](stealthgyro@gmail.com); Please include Twitter Embeds in the subject line
 - Github: You can create an issue on this repository if you've found a bug not already mentioned in TODO.txt
 
 ## Alternatives
 
 If you're unable to add the bot to your server, or you're looking for something different, the following may be of use to you
 
+- [adryd325/discord-twitter-video-embeds](https://github.com/adryd325/discord-twitter-video-embeds): The original I forked this project from.
 - [TwitFix/fxtwitter](https://github.com/robinuniverse/TwitFix): Fixes Twitter embeds in Discord for mobile users
 - [proxy.knotty.dev](https://proxy.knotty.dev/): A proxy for Reddit videos
