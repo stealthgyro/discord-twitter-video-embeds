@@ -8,7 +8,7 @@ class InstagramPost {
     if (!data.scraper) {
       this.id = data.id;
       this.createdAt = new Date(parseInt(data.timestamp.toString() + "000"));
-      this.content = data.description;
+      this.content = data.description + '';
       this.displayName = data.creator;
       this.username = data.uploader;
       this.authorUrl = data.uploader_url;
