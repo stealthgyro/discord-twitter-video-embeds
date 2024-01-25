@@ -9,6 +9,7 @@ const clients = new Map();
 
 clients.set("REDDIT", RedditClient);
 clients.set("REDDIT_VIDEO", RedditVideo);
+clients.set("REDDIT_SLASH_S", RedditVideo);
 clients.set("TIKTOK", TikTokClient);
 clients.set("TIKTOK_REDIRECT", TikTokRedirect);
 clients.set("INSTAGRAM", InstagramClient);
