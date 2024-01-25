@@ -46,6 +46,7 @@ module.exports.Providers = keyMirror([
   "INSTAGRAM",
   "REDDIT",
   "REDDIT_VIDEO",
+  "REDDIT_SLASH_S",
   "TIKTOK",
   "TIKTOK_REDIRECT",
   "TWITTER",
@@ -54,8 +55,9 @@ module.exports.Providers = keyMirror([
 
 module.exports.URLRegexes = {
   INSTAGRAM: /https?:\/\/(?:www\.)?(instagram|facebook)\.com\/(?:p|tv|reels|reel|share\/r)\/[^/?#&]+/,
-  REDDIT: /https?:\/\/(?:[^/]+\.)?reddit\.com(\/r\/[^/]+(\/comments\/|\/s\/)([^/?#&\s]+))/,
+  REDDIT: /https?:\/\/(?:[^/]+\.)?reddit\.com(\/r\/[^/]+\/comments\/([^/?#&]+))/,
   REDDIT_VIDEO: /https?:\/\/v\.redd\.it\/([^/?#&]+)/,
+  REDDIT_SLASH_S: /https?:\/\/(?:[^/]+\.)?reddit\.com(\/r\/[^/]+\/s\/([^/?#&\s]+))/,
   TIKTOK: /https?:\/\/(?:www\.)?tiktok\.com\/@[0-9a-zA-Z._]+\/video\/(\d+)/,
   TIKTOK_REDIRECT: /https?:\/\/([a-z]{2,3})\.tiktok\.com\/(t\/)?([A-Za-z0-9]+)/,
   TWITTER: /https?:\/\/(?:(?:www|m(?:obile)?)\.)?(fx|vx)?twitter\.com\/(?:(?:i\/web|[^/]+)\/status|statuses)\/(\d+)/,
