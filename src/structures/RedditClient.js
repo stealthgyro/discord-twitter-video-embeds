@@ -2,10 +2,12 @@ const fetch = require("node-fetch");
 const ClientError = require("./ClientError");
 const RedditPost = require("./RedditPost");
 const { USER_AGENT } = require("../util/Constants");
+const log = require("../util/log");
 
 // https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/reddit.py
 class RedditClient {
   async getPost(match) {
+    log.verbose("RedditClient", JSON.stringify(match));
     const permalink = match[1];
     const url = `https://old.reddit.com${permalink}`;
     const jsonURL = url + "/.json";
