@@ -1,16 +1,21 @@
 const fetch = require("node-fetch");
+const cookiefile = require('cookiefile');
 const ClientError = require("./ClientError");
 const RedditClient = require("./RedditClient");
-const { USER_AGENT } = require("../util/Constants");
+const { GENERIC_USER_AGENT } = require("../util/Constants");
 const log = require("../util/log");
 
 module.exports.getPost = function getPost(match) {
+  const cookiemap = new cookiefile.CookieMap('../data/cookies.txt');
+  const cookies = cookiemap.toRequestHeader().replace('Cookie: ','');
   const url = match[0];
   log.verbose("RedditVideo", `url ${url}`);
   return fetch(url, {
-    method: "HEAD",
+    method: "HEAD", // *GET, POST, PUT, DELETE, HEAD, etc.
+    credentials: "include", // include, *same-origin, omit
     headers: {
-      "User-Agent": USER_AGENT
+        "User-Agent": GENERIC_USER_AGENT,
+        "Cookie": cookies
     },
     redirect: "follow"
   }).then((response) => {
