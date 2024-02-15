@@ -24,42 +24,7 @@ class SongLinkPost {
             }
         }
     }
-
-    // #WIP: FROM TIKTOK POST - Review A Start
-    // filter best quality
-    // intentionally picking the watermarked video cause i feel like thats more moral
-    // if videos get shared
-    // FIXME: pass guild into here somehow for upload limit
-    const chosenFile = data.formats
-      .filter((media) => media.filesize < MAX_DISCORD_UPLOAD && media.format.includes("Direct video"))
-      .sort((a, b) => b.quality - a.quality)?.[0];
-
-    if (!chosenFile) {
-      return;
-    }
-
-    if (chosenFile.http_headers) {
-      this._headers = chosenFile.http_headers;
-    } else {
-      this._headers = {};
-    }
-    this._videoUrl = chosenFile.url;
-    // #WIP: FROM TIKTOK POST - Review A End
   }
-
-  // #WIP: FROM TIKTOK POST - Review B Start
-//   getDiscordAttachment(spoiler) {
-//     if (this._videoUrl) {
-//       return fetch(this._videoUrl, {
-//         headers: this._headers
-//       })
-//         .then((response) => response.buffer())
-//         .then((videoResponse) => {
-//           return new AttachmentBuilder(videoResponse, { name: `${spoiler ? "SPOILER_" : ""}${this.id}.mp4` });
-//         });
-//     } else return;
-//   }
-  // #WIP: FROM TIKTOK POST - Review B End
 
   // #WIP: FROM TIKTOK POST - Review C Start
   getDiscordEmbed() {
