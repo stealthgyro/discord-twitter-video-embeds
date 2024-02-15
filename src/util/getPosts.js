@@ -60,11 +60,12 @@ async function getPost(mdMatch, options, spoiler) {
   // INSTAGRAM video urls are just borked in Discord
   // RE_EMBED and RE_COMPOSE don't have scraping since we provide our own embeds
   const needsAttachment =
-    provider === Providers.INSTAGRAM ||
+    provider !== Providers.SONG_LINK &&
+    (provider === Providers.INSTAGRAM ||
     provider === Providers.TIKTOK ||
     provider === Providers.TIKTOK_REDIRECT ||
     options.mode === EmbedModes.RE_EMBED ||
-    options.mode === EmbedModes.RE_COMPOSE;
+    options.mode === EmbedModes.RE_COMPOSE);
 
   // Only fetch attachment if needed
   // My poor bandwidth

@@ -14,7 +14,7 @@ class SongLink {
       if (!song) {
         return;
       } else {
-        log.verbose("SongLink", "song: " + song);
+        log.verbose("SongLink", "song: " + JSON.stringify(song));
         return song;
       }
     } catch (err) {
