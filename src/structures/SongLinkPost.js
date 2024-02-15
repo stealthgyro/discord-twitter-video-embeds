@@ -1,6 +1,6 @@
 const { AttachmentBuilder, EmbedBuilder } = require("discord.js");
 const fetch = require("node-fetch");
-const { TIKTOK_HOME, MAX_DISCORD_UPLOAD, Colors, Favicons } = require("../util/Constants");
+const { MAX_DISCORD_UPLOAD, Colors, Favicons } = require("../util/Constants");
 
 class SongLinkPost {
   constructor(data) {
