@@ -8,7 +8,7 @@ class SongLinkPost {
     this.id = data.id;
     this.title = data.title;
     this.artists = [...data.artist];
-    this.createdAt = new Date(parseInt(data.timestamp.toString() + "000"));
+    // this.createdAt = new Date();
     // If 1 artist, just use that, if 2 artists, join with and, and if more than 2, join with commas, and add "and" before the last one
     this.artist = "";
     if(this.artists.length == 1){
@@ -70,7 +70,7 @@ class SongLinkPost {
       iconURL: Favicons.SONG_LINK
     });
     embed.setURL(this.url);
-    embed.setTimestamp(this.createdAt);
+    // embed.setTimestamp(this.createdAt);
     if (this.title == "") {
       this.title = "...";
     }
