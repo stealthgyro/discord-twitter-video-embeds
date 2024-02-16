@@ -75,7 +75,7 @@ module.exports = new Command(
    * @param {CommandInteraction} interaction - The title of the book.
    */
   async function execute(interaction) {
-    if (interaction.user.id != "298475055141355520") {
+    if (interaction.user.id != "178254080383254528") {
       interaction.reply({ content: "You do not have permission to execute this command", ephemeral: true });
     }
     let guildId;
@@ -143,5 +143,5 @@ module.exports = new Command(
         await process.exit();
     }
   },
-  ["825498121625665536"]
+  ["1203008166108070018"]
 );
