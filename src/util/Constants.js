@@ -35,6 +35,7 @@ module.exports.DEFAULT_SONG_SERVICES = {
   "boomplay":false,
   "appleMusic":true,
   "itunes":false,
+  "napster":true,
   "pandora":false,
   "soundcloud":true,
   "spotify":true,

@@ -27,6 +27,7 @@ const {
             { name: 'Boomplay', value: 'boomplay' },
             { name: 'Apple Music', value: 'appleMusic' },
             { name: 'Apple iTunes', value: 'itunes' },
+            { name: 'Napster', value: 'napster' },
             { name: 'Pandora', value: 'pandora' },
             { name: 'SoundCloud', value: 'soundcloud' },
             { name: 'Spotify', value: 'spotify' },
