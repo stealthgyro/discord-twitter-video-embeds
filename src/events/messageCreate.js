@@ -81,7 +81,7 @@ async function sendMessage(message, posts, options) {
       // eslint-disable-next-line no-fallthrough
       case EmbedModes.VIDEO_REPLY:
       default:
-        log.verbose("messageCreate sendMessage", "Chose VIDEO_REPLY");
+        log.verbose("messageCreate sendMessage", "default Mode using VIDEO_REPLY");
         return await videoReply(message, posts);
     }
   } catch (error) {

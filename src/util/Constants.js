@@ -28,6 +28,20 @@ module.exports.GENERIC_USER_AGENT =
 module.exports.TIKTOK_HOME = "https://www.tiktok.com";
 module.exports.INSTAGRAM_HOME = "https://www.instagram.com";
 
+module.exports.DEFAULT_SONG_SERVICES = {
+  "amazonMusic":true,
+  "amazonStore":false,
+  "anghami":false,
+  "boomplay":false,
+  "appleMusic":true,
+  "itunes":false,
+  "pandora":false,
+  "soundcloud":true,
+  "spotify":true,
+  "youtube":true,
+  "youtubeMusic":true
+};
+
 module.exports.EmbedModes = createEnum([null, "VIDEO_REPLY", "RE_EMBED", "RE_COMPOSE"]);
 module.exports.SAFEST_EMBED_MODE = this.EmbedModes.VIDEO_REPLY;
 

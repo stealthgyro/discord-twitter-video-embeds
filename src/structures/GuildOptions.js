@@ -23,7 +23,7 @@ class GuildOptions {
       const mode = dbEntry.getDataValue("mode");
       // @ts-ignore
       const flags = new GuildFlags(dbEntry.getDataValue("flags") ?? 0);
-      const options = { mode, flags };
+      const options = { mode, flags, musicServices: dbEntry.getDataValue("musicServices")};
       return options;
     } else {
       return null;
@@ -41,6 +41,9 @@ class GuildOptions {
     }
     if (options.mode) {
       dbUpdate.mode = options.mode;
+    }
+    if (options.musicServices) {
+      dbUpdate.musicServices = options.musicServices;
     }
     return this.db.findOne({ where: { guildID } }).then((currentEntry) => {
       if (currentEntry) {

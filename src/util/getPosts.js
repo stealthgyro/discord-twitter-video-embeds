@@ -79,7 +79,7 @@ async function getPost(mdMatch, options, spoiler) {
   }
 
   return {
-    embed: post.getDiscordEmbed(),
+    embed: post.getDiscordEmbed(options),
     url: post.url,
     videoUrl: post.videoUrl ?? null,
     provider,
