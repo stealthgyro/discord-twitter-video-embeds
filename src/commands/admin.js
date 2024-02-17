@@ -75,20 +75,20 @@ module.exports = new Command(
    * @param {CommandInteraction} interaction - The title of the book.
    */
   async function execute(interaction) {
-    if (interaction.user.id != "298475055141355520") {
+    if (interaction.user.id != "178254080383254528") {
       interaction.reply({ content: "You do not have permission to execute this command", ephemeral: true });
     }
     let guildId;
+    // @ts-ignore
     switch (interaction.options.getSubcommand()) {
       case "evaluate":
-        let public = !interaction.options.getBoolean("public");
-        if (public == null) {
-          public = true;
-        }
+        // @ts-ignore
+        let public = !interaction.options.getBoolean("public"); //comment to explain the name, it's actually the reverse because ephemeral of true means private.
         try {
           const client = interaction.client;
           const { sh } = require("../util/Utils");
           const fetch = require("node-fetch");
+          // @ts-ignore
           const result = await eval(interaction.options.getString("content"));
           await interaction.reply({ content: `\`\`\`${inspect(result).substring(0, 1990)}\`\`\``, ephemeral: public });
         } catch (e) {
@@ -105,6 +105,7 @@ module.exports = new Command(
           interaction.reply({ content: "No guildid specified and command not run in guild", ephemeral: true });
           break;
         }
+        // @ts-ignore
         const flags = new GuildFlags(interaction.options.getInteger("flags"));
         GuildOptions.setOptions(guildId, { flags }).then(() => {
           interaction.reply({
@@ -120,6 +121,7 @@ module.exports = new Command(
           interaction.reply({ content: "No guildid specified and command not run in guild", ephemeral: true });
           break;
         }
+        // @ts-ignore
         const mode = interaction.options.getInteger("mode");
         GuildOptions.setOptions(guildId, { mode }).then(() => {
           interaction.reply({
@@ -143,5 +145,5 @@ module.exports = new Command(
         await process.exit();
     }
   },
-  ["825498121625665536"]
+  ["1203008166108070018"]
 );

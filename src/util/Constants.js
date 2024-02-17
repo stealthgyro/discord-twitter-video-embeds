@@ -28,6 +28,20 @@ module.exports.GENERIC_USER_AGENT =
 module.exports.TIKTOK_HOME = "https://www.tiktok.com";
 module.exports.INSTAGRAM_HOME = "https://www.instagram.com";
 
+module.exports.DEFAULT_SONG_SERVICES = {
+  "amazonMusic":true,
+  "amazonStore":false,
+  "anghami":false,
+  "boomplay":false,
+  "appleMusic":true,
+  "itunes":false,
+  "pandora":false,
+  "soundcloud":true,
+  "spotify":true,
+  "youtube":true,
+  "youtubeMusic":true
+};
+
 module.exports.EmbedModes = createEnum([null, "VIDEO_REPLY", "RE_EMBED", "RE_COMPOSE"]);
 module.exports.SAFEST_EMBED_MODE = this.EmbedModes.VIDEO_REPLY;
 
@@ -47,6 +61,7 @@ module.exports.Providers = keyMirror([
   "REDDIT",
   "REDDIT_VIDEO",
   "REDDIT_SLASH_S",
+  "SONG_LINK",
   "TIKTOK",
   "TIKTOK_REDIRECT",
   "TWITTER",
@@ -58,6 +73,7 @@ module.exports.URLRegexes = {
   REDDIT: /https?:\/\/(?:[^/]+\.)?reddit\.com(\/r\/[^/]+\/comments\/([^/?#&]+))/,
   REDDIT_VIDEO: /https?:\/\/v\.redd\.it\/([^/?#&]+)/,
   REDDIT_SLASH_S: /https?:\/\/(?:[^/]+\.)?reddit\.com(\/r\/[^/]+\/s\/([^/?#&\s]+))/,
+  SONG_LINK: /(https?:\/\/(music\.(apple|youtube)\.com|open\.spotify\.com|spotify\.link)\/[^\s]+)/,
   TIKTOK: /https?:\/\/(?:www\.)?tiktok\.com\/@[0-9a-zA-Z._]+\/video\/(\d+)/,
   TIKTOK_REDIRECT: /https?:\/\/([a-z]{2,3})\.tiktok\.com\/(t\/)?([A-Za-z0-9]+)/,
   TWITTER: /https?:\/\/(?:(?:www|m(?:obile)?)\.)?(fx|vx)?twitter\.com\/(?:(?:i\/web|[^/]+)\/status|statuses)\/(\d+)/,
@@ -67,6 +83,7 @@ module.exports.URLRegexes = {
 module.exports.Favicons = {
   INSTAGRAM: "https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png",
   REDDIT: "https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png",
+  SONG_LINK: "https://odesli.co/favicon-16x16.png",
   TIKTOK: "https://sf-tb-sg.ibytedtos.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png",
   TWITTER: "https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
 };
@@ -74,6 +91,7 @@ module.exports.Favicons = {
 module.exports.Colors = {
   INSTAGRAM: 0xe1306c,
   REDDIT: 0xff4500,
+  SONG_LINK: 0xffffff,
   TWITTER: 0x1da1f2,
   TIKTOK: 0xee1d52
 };

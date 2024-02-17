@@ -16,6 +16,7 @@ module.exports = async function videoReply(message, posts, fallback = false) {
 
   let attachmentPromises = [];
   let content = "";
+  const embeds = [];
   posts.forEach(async (post) => {
     if (!post) return;
     if (post.attachment && !fallback) {
@@ -27,6 +28,17 @@ module.exports = async function videoReply(message, posts, fallback = false) {
       log.verbose("videoReply", "added video url");
       if (post.spoiler) content += ` || ${post.videoUrl} ||`;
       else content += " " + post.videoUrl;
+    }
+    if(post.provider == "SONG_LINK"){
+      log.verbose("videoReply", "SONG_LINK: going to just reply with the url");
+      if (post.embed) {
+        embeds.push(post.embed);
+      }
+      if(post.spoiler){
+        content += ` || ${post.url} ||`;
+      }else{
+        content += " " + post.url;
+      }
     }
   });
 
@@ -70,7 +82,7 @@ module.exports = async function videoReply(message, posts, fallback = false) {
 
   let response;
   try {
-    response = await safeReply(message, { files: attachments, content });
+    response = await safeReply(message, { files: attachments, embeds, content });
   } catch (e) {
     if (e instanceof DiscordAPIError) {
       //noop
