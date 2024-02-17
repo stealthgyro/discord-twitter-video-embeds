@@ -61,14 +61,18 @@ class SongLinkPost {
     }else{
       musicServiceObj = DEFAULT_SONG_SERVICES;
     }
+    let linksArr = [];
     for (let members in this.linksByPlatform) {
       if (musicServiceObj[members] == true) {
-        embed.addFields({
-          name: members,
-          value: this.linksByPlatform[members]?.url,
-          inline: true
-        });
+        linksArr.push(`[${members}]( ${this.linksByPlatform[members]?.url} )`);
       }
+    }
+    if(linksArr.length > 0){
+      embed.addFields({
+        name: "Links",
+        value: linksArr.join("\n"),
+        inline: true
+      });
     }
     return embed;
   }
