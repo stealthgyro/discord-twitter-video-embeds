@@ -8,7 +8,8 @@ GuildOptionsDB.init(
   {
     guildID: { type: DataTypes.STRING, unique: true },
     mode: DataTypes.INTEGER,
-    flags: { type: DataTypes.INTEGER, allowNull: true }
+    flags: { type: DataTypes.INTEGER, allowNull: true },
+    musicServices: { type: DataTypes.TEXT, allowNull: true }
   },
   {
     sequelize: database,
