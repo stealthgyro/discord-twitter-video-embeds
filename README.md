@@ -1,4 +1,9 @@
 # Tilted-embeds
+quick update: 2024.03.22
+So I made the bot public, this has a lot of inherited source, I've mostly just been editing and fixing issues as they come in. This bot at the moment, has no itention for any grandious plans of trying to be a big public bot. I have a day job, that being said, I personally tend to use this bot a lot so I'll probably fix things when I get a chance.
+
+---
+
 Added Instagram support via yt-dlp binary and cookies from cookies.txt extension (Firefox, cookie container limited to just the accounts I want in there, and make it look like more of a real person, use the account occasionally)...
 Facebook without cookies added within the instagram client and regex, just if it can download it without an account it will using yt-dlp. Some other minor fixes, I need to update this readme more, but this is only in a few servers.
 
