@@ -10,16 +10,16 @@ const log = require("../util/log");
 
 const TWITTER_GUEST_TOKEN =
   "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA";
-const WEB_TWEET_ENDPOINT = (tweetID) => `https://twitter.com/LillianaFuture/${tweetID}`;
+const WEB_TWEET_ENDPOINT = (tweetID) => `https://x.com/LillianaFuture/${tweetID}`;
 const GRAPHQL_TWEET_ENDPOINT = (tweetID, flags) => {
-  return `https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId?variables={"tweetId":"${tweetID}","withCommunity":false,"includePromotedContent":false,"withVoice":false}&features=${JSON.stringify(
+  return `https://x.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId?variables={"tweetId":"${tweetID}","withCommunity":false,"includePromotedContent":false,"withVoice":false}&features=${JSON.stringify(
     flags
   )}`;
 };
 const GUEST_TOKEN_REGEX = /gt=(\d+); Max-Age=\d+;/;
 // https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/twitter.py
 class TwitterGuestClient {
-  log.verbose("TwitterGraphQLGuestClient", "tweetID: " + tweetID);
+  // log.verbose("TwitterGraphQLGuestClient", "tweetID: " + tweetID); //doesn't exist yet?
   _fetchGuestToken(id) {
     this.guestToken = "";
     this.cookie = "";

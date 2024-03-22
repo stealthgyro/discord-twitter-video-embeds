@@ -10,9 +10,9 @@ const log = require("../util/log");
 
 const TWITTER_GUEST_TOKEN =
   "Bearer AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%2F40K4moUkGsoc%3DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw";
-const GUEST_TOKEN_ENDPOINT = "https://api.twitter.com/1.1/guest/activate.json";
+const GUEST_TOKEN_ENDPOINT = "https://api.x.com/1.1/guest/activate.json";
 const TWEET_ENDPOINT = (tweetID) =>
-  `https://api.twitter.com/2/timeline/conversation/${tweetID}.json?tweet_mode=extended&include_user_entities=1`;
+  `https://api.x.com/2/timeline/conversation/${tweetID}.json?tweet_mode=extended&include_user_entities=1`;
 
 // https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/twitter.py
 class TwitterGuestClient {
