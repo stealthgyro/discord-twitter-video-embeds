@@ -19,10 +19,10 @@ const GRAPHQL_TWEET_ENDPOINT = (tweetID, flags) => {
 const GUEST_TOKEN_REGEX = /gt=(\d+); Max-Age=\d+;/;
 // https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/twitter.py
 class TwitterGuestClient {
-  // log.verbose("TwitterGraphQLGuestClient", "tweetID: " + tweetID); //doesn't exist yet?
   _fetchGuestToken(id) {
     this.guestToken = "";
     this.cookie = "";
+    log.verbose("TwitterGraphQLGuestClient", "id: " + id);
     return fetch(WEB_TWEET_ENDPOINT(id), {
       headers: {
         "user-agent": GENERIC_USER_AGENT
