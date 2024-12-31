@@ -4,6 +4,7 @@ const modeCommand = require("./commands/embedmode");
 const twitterVideoEmbedCommand = require("./commands/twitterembedall");
 const adminCommand = require("./commands/admin");
 const toggleMusicServicesCommand = require("./commands/toggleMusicServices");
+const serviceSettingsCommand = require("./commands/serviceSettings");
 const { database } = require("./database");
 const discord = require("./discord");
 const messageCreate = require("./events/messageCreate");
@@ -98,6 +99,7 @@ discord.on("debug", (data) => {
 interactionHandler.registerCommand(modeCommand);
 interactionHandler.registerCommand(twitterVideoEmbedCommand);
 interactionHandler.registerCommand(adminCommand);
+interactionHandler.registerCommand(serviceSettingsCommand);
 interactionHandler.registerCommand(toggleMusicServicesCommand);
 
 let exiting = false;

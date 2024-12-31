@@ -10,3 +10,11 @@ docker-compose down && docker-compose build && docker-compose up -d && docker lo
 
 # Stack changed or something like that and docker compose down didn't work...
 docker stop tilted-embed && && docker rm tilted-embed && docker compose build && docker compose up -d && docker logs -f tilted-embed
+
+
+
+# just faster testing without rebuilding docker.
+node --env-file=.env index.js
+node --env-file=./ignore/.env index.js
+
+/usr/local/bin/node --env-file=./ignore/.env index.js

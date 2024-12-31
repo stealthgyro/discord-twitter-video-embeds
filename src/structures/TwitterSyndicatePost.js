@@ -23,12 +23,12 @@ class TwitterSyndicatePost {
   }
 
   get url() {
-    return `https://x.com/i/status/${this.id}`;
+    return `https:/twitter.com/i/status/${this.id}`;
   }
 
   get authorUrl() {
     // Permanent URL, even if the author changes their @
-    return `https://x.com/i/user/${this.userID}`;
+    return `https://twitter.com/i/user/${this.userID}`;
   }
 
   getDiscordAttachments(spoiler) {

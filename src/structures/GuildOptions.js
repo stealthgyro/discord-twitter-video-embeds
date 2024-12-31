@@ -23,7 +23,11 @@ class GuildOptions {
       const mode = dbEntry.getDataValue("mode");
       // @ts-ignore
       const flags = new GuildFlags(dbEntry.getDataValue("flags") ?? 0);
-      const options = { mode, flags, musicServices: dbEntry.getDataValue("musicServices")};
+      // automatically create column if it doesn't exist ... didn't work
+      // if (dbEntry.getDataValue("serviceSettings") === null) {
+      //   dbEntry.update({ serviceSettings: "{}" });
+      // }
+      const options = { mode, flags, musicServices: dbEntry.getDataValue("musicServices"), serviceSettings: dbEntry.getDataValue("serviceSettings") };
       return options;
     } else {
       return null;
@@ -44,6 +48,9 @@ class GuildOptions {
     }
     if (options.musicServices) {
       dbUpdate.musicServices = options.musicServices;
+    }
+    if (options.serviceSettings) {
+      dbUpdate.serviceSettings = options.serviceSettings;
     }
     return this.db.findOne({ where: { guildID } }).then((currentEntry) => {
       if (currentEntry) {

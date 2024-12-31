@@ -9,6 +9,23 @@ const log = require("../util/log");
 const TWEET_ENDPOINT = (tweetID) => `https://cdn.syndication.twimg.com/tweet-result?id=${tweetID}`;
 
 class TwitterSyndicateClient {
+  getSetting(options, match){
+    const dbOptions = options;
+    let mediaServiceObj = {};
+    if(dbOptions && dbOptions.serviceSettings){
+      mediaServiceObj = JSON.parse(dbOptions.serviceSettings)
+    }else{
+      mediaServiceObj = DEFAULT_MEDIA_SERVICES;
+    }
+    var urlMatch = match[0];
+    log.verbose("TwitterSyndicateClient(getSetting)", `Got urlMatch: ${urlMatch}`);
+    try{
+      return mediaServiceObj.twitter; // {tilted, external, off}
+    }catch(ignored){
+      log.error("TwitterSyndicateClient", ignored);
+    }
+    return;
+  }
   // TODO: Renew client token when errors
   // eslint-disable-next-line no-unused-vars
   async getPost(match, options, isRetry = false) {

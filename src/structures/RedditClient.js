@@ -6,6 +6,23 @@ const log = require("../util/log");
 
 // https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/reddit.py
 class RedditClient {
+    getSetting(options, match){
+      const dbOptions = options;
+      let mediaServiceObj = {};
+      if(dbOptions && dbOptions.serviceSettings){
+        mediaServiceObj = JSON.parse(dbOptions.serviceSettings)
+      }else{
+        mediaServiceObj = DEFAULT_MEDIA_SERVICES;
+      }
+      var urlMatch = match[0];
+      log.verbose("RedditClient(getSetting)", `Got urlMatch: ${urlMatch}`);
+      try{
+        return mediaServiceObj.reddit; // {tilted, external, off}
+      }catch(ignored){
+        log.error("RedditClient", ignored);
+      }
+      return;
+    }
   async getPost(match) {
     log.verbose("RedditClient", JSON.stringify(match));
     const permalink = match[1];

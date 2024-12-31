@@ -67,12 +67,12 @@ class TwitterPost {
   }
 
   get url() {
-    return `https://x.com/i/status/${this.id}`;
+    return `https://twitter.com/i/status/${this.id}`;
   }
 
   get authorUrl() {
     // Permanent URL, even if the author changes their @
-    return `https://x.com/i/user/${this.userID}`;
+    return `https://twitter.com/i/user/${this.userID}`;
   }
 
   getDiscordAttachments(spoiler) {
@@ -150,7 +150,7 @@ class TwitterPost {
       embed.addFields({ name: "Likes", value: this.likes.toString(), inline: true });
     }
     if(this.isQuote){
-      embed.addFields({ name: `Quote from:${this.quote.displayName} (@${this.quote.username})`, value: `[Original Tweet: ](https://x.com/i/status/${this.quote.id}) ${this.quote.content}`});
+      embed.addFields({ name: `Quote from:${this.quote.displayName} (@${this.quote.username})`, value: `[Original Tweet: ](https://twitter.com/i/status/${this.quote.id}) ${this.quote.content}`});
     }
     return embed;
   }

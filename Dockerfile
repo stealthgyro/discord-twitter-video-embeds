@@ -1,4 +1,4 @@
-FROM node:16-bookworm
+FROM node
 
 RUN apt-get update
 RUN apt-get install -y ffmpeg git sudo gcc g++ make yt-dlp
