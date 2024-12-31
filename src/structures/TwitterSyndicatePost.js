@@ -23,7 +23,7 @@ class TwitterSyndicatePost {
   }
 
   get url() {
-    return `https://twitter.com/i/status/${this.id}`;
+    return `https:/twitter.com/i/status/${this.id}`;
   }
 
   get authorUrl() {

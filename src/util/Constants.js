@@ -43,6 +43,15 @@ module.exports.DEFAULT_SONG_SERVICES = {
   "youtubeMusic":true
 };
 
+//tilted, external, or off
+module.exports.DEFAULT_MEDIA_SERVICES = {
+  "facebook":'tilted',
+  "instagram":'tilted',
+  "reddit":'tilted',
+  "tiktok":'off',
+  "twitter":'https://vxtwitter.com/'
+};
+
 module.exports.EmbedModes = createEnum([null, "VIDEO_REPLY", "RE_EMBED", "RE_COMPOSE"]);
 module.exports.SAFEST_EMBED_MODE = this.EmbedModes.VIDEO_REPLY;
 

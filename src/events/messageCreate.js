@@ -7,6 +7,7 @@ const {
   RESTJSONErrorCodes
 } = require("discord.js");
 const discord = require("../discord");
+const external = require("../handlers/external");
 const reCompose = require("../handlers/reCompose");
 const reEmbed = require("../handlers/reEmbed");
 const videoReply = require("../handlers/videoReply");
@@ -57,6 +58,18 @@ function shouldProcessMessage(message) {
 async function sendMessage(message, posts, options) {
   try {
     switch (options.mode) {
+      case 'EXTERNAL':
+        // We can't re-compose in a DM channel
+        // I'm not optimistic that webhooks will work in threads
+        if (
+          message.channel instanceof GuildChannel &&
+          !(message.channel instanceof ThreadChannel) &&
+          message.content.length < MAX_DISCORD_MESSAGE_LENGTH
+        ) {
+          log.verbose("messageCreate sendMessage", "Chose EXTERNAL");
+          return await external(message, posts);
+        }
+        log.verbose("messageCreate sendMessage", "Fell-through EXTERNAL");
       case EmbedModes.RE_COMPOSE:
         // We can't re-compose in a DM channel
         // I'm not optimistic that webhooks will work in threads
@@ -111,6 +124,8 @@ module.exports = async function handleMessage(message) {
   const syntaxTree = markdownParser(message.content);
   log.verbose("messageCreate", "Got syntax tree");
 
+  // Before getPosts I want to know what my settings are tilted, external, or off (external is anything that starts with http)
+
   // Get all tweets from message, this starts fetching things in the background
   const postsPromises = getPosts(syntaxTree, options);
   log.verbose("messageCreate", "Got posts");
@@ -122,6 +137,7 @@ module.exports = async function handleMessage(message) {
     return null;
   }
 
+  let external = false;
   // Resolve all the posts
   const posts = await Promise.all(postsPromises);
   log.verbose("messageCreate", "Resolved all posts:");

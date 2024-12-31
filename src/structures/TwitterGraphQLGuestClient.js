@@ -10,19 +10,37 @@ const log = require("../util/log");
 
 const TWITTER_GUEST_TOKEN =
   "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA";
-const WEB_TWEET_ENDPOINT = (tweetID) => `https://twitter.com/LillianaFuture/${tweetID}`;
+const WEB_TWEET_ENDPOINT = (tweetID) => `https://twitter.com/LillianaFuture/status/${tweetID}`;
 const GRAPHQL_TWEET_ENDPOINT = (tweetID, flags) => {
-  return `https://twitter.com/i/api/graphql/0hWvDhmW8YQ-S_ib3azIrw/TweetResultByRestId?variables={"tweetId":"${tweetID}","withCommunity":false,"includePromotedContent":false,"withVoice":false}&features=${JSON.stringify(
+  return `https://twitter.com/i/api/graphql/OUKdeWm3g4tDbW5hffX_QA/TweetResultByRestId?variables={"tweetId":"${tweetID}","withCommunity":false,"includePromotedContent":false,"withVoice":false}&features=${JSON.stringify(
     flags
   )}`;
 };
 const GUEST_TOKEN_REGEX = /gt=(\d+); Max-Age=\d+;/;
 // https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/twitter.py
 class TwitterGuestClient {
-  _fetchGuestToken(id) {
+    getSetting(options, match){
+      const dbOptions = options;
+      let mediaServiceObj = {};
+      if(dbOptions && dbOptions.serviceSettings){
+        mediaServiceObj = JSON.parse(dbOptions.serviceSettings)
+      }else{
+        mediaServiceObj = DEFAULT_MEDIA_SERVICES;
+      }
+      var urlMatch = match[0];
+      log.verbose("TwitterGuestClient(getSetting)", `Got urlMatch: ${urlMatch}`);
+      try{
+        return mediaServiceObj.twitter; // {tilted, external, off}
+      }catch(ignored){
+        log.error("TwitterGuestClient", ignored);
+      }
+      return;
+    }
+  _fetchGuestToken(id, incomingURL) {
     this.guestToken = "";
     this.cookie = "";
-    return fetch(WEB_TWEET_ENDPOINT(id), {
+    log.verbose("TwitterGraphQLGuestClient", "id: " + id);
+    return fetch(incomingURL, {
       headers: {
         "user-agent": GENERIC_USER_AGENT
       },
@@ -36,7 +54,7 @@ class TwitterGuestClient {
           this.cookie += setCookie.split(";")[0] + "; ";
         });
         log.verbose("TwitterGraphQLGuestClient", "got cookies");
-        return fetch(WEB_TWEET_ENDPOINT(id), {
+        return fetch(incomingURL, {
           headers: {
             "user-agent": GENERIC_USER_AGENT,
             cookie: this.cookie
@@ -65,12 +83,14 @@ class TwitterGuestClient {
   // TODO: Renew client token when errors
   // eslint-disable-next-line no-unused-vars
   async getPost(match, options, isRetry = false) {
+    log.verbose("TwitterGraphQLGuestClient", "getPost: match: " + match);
+    const urlSansQueryParams = match[0].split("?")[0];
     const id = match[2];
     const twitfix = match[1] ? match[1] : "";
     if (!options.flags.has(GuildFlags.Flags.PARSE_TWITFIX) && twitfix != "") return "";
     if (twitfix != "" && options.mode === EmbedModes.VIDEO_REPLY) return "";
     if (this.guestToken == null) {
-      await this._fetchGuestToken(id);
+      await this._fetchGuestToken(id, urlSansQueryParams);
     }
     if (this.flags == null) {
       this.flags = {};

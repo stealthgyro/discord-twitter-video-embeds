@@ -39,11 +39,38 @@ async function getPost(mdMatch, options, spoiler) {
     if (!(provider == Providers.TWITTER || provider == Providers.X_DOT_COM)) return null;
   }
 
+  // TIKTOK and TIKTOK_REDIRECT need to be downloadded with a cookie and origin
+  // INSTAGRAM video urls are just borked in Discord
+  // RE_EMBED and RE_COMPOSE don't have scraping since we provide our own embeds
+  const needsAttachment =
+    provider !== Providers.SONG_LINK &&
+    (provider === Providers.INSTAGRAM ||
+    provider === Providers.TIKTOK ||
+    provider === Providers.TIKTOK_REDIRECT ||
+    options.mode === EmbedModes.RE_EMBED ||
+    options.mode === EmbedModes.RE_COMPOSE);
+
   // If we do have a provider, call getPost
   let post;
   try {
     const providerClient = clients.get(provider);
     if (!providerClient) return null;
+    let serviceSetting = providerClient.getSetting(options, match).toLowerCase().trim();
+    log.verbose("getPosts", `Got serviceSetting: ${serviceSetting}`);
+    if(serviceSetting.indexOf('http') === 0){
+      let postReturn = {
+        url: url.href,
+        provider,
+        spoiler,
+        needsAttachment,
+        serviceSetting
+      };
+      options.mode = 'EXTERNAL'; // TODO: Verify this is correct...
+      return postReturn;
+    }
+    if(serviceSetting === 'off'){
+      return null; // TODO: I think this crashes and could be problematic, but good for laziness at the moment.
+    }
     post = await providerClient.getPost(match, options);
   } catch (error) {
     if (error instanceof ClientError || error instanceof TwitterError || error instanceof TwitterErrorList) {
@@ -56,16 +83,6 @@ async function getPost(mdMatch, options, spoiler) {
   // In the case a post doesn't meet our criteria (eg. not a video)
   if (!post) return null;
 
-  // TIKTOK and TIKTOK_REDIRECT need to be downloadded with a cookie and origin
-  // INSTAGRAM video urls are just borked in Discord
-  // RE_EMBED and RE_COMPOSE don't have scraping since we provide our own embeds
-  const needsAttachment =
-    provider !== Providers.SONG_LINK &&
-    (provider === Providers.INSTAGRAM ||
-    provider === Providers.TIKTOK ||
-    provider === Providers.TIKTOK_REDIRECT ||
-    options.mode === EmbedModes.RE_EMBED ||
-    options.mode === EmbedModes.RE_COMPOSE);
 
   // Only fetch attachment if needed
   // My poor bandwidth
@@ -85,7 +102,6 @@ async function getPost(mdMatch, options, spoiler) {
     provider,
     spoiler,
     needsAttachment,
-    attachment
   };
 }
 

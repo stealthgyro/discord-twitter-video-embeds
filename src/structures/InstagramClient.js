@@ -8,9 +8,33 @@ const {
 } = require('@bochilteam/scraper');
 
 class InstagramClient {
+  getSetting(options, match){
+    const dbOptions = options;
+    let mediaServiceObj = {};
+    if(dbOptions && dbOptions.serviceSettings){
+      mediaServiceObj = JSON.parse(dbOptions.serviceSettings)
+    }else{
+      mediaServiceObj = DEFAULT_MEDIA_SERVICES;
+    }
+    var urlMatch = match[0];
+    log.verbose("InstagramClient(getSetting)", `Got urlMatch: ${urlMatch}`);
+    try{
+      if(urlMatch.includes("facebook.com")){
+        // FB
+        return mediaServiceObj.facebook; // {tilted, external, off}
+      }else{
+        // IG
+        return mediaServiceObj.instagram; // {tilted, external, off}
+      }
+    }catch(ignored){
+      log.error("InstagramClient", ignored);
+    }
+    return;
+  }
+
   async getPost(match) {
     var urlMatch = match[0];
-    log.verbose("InstagramClient", `Got urlMatch: ${urlMatch}`);
+    log.verbose("InstagramClient(getPost)", `Got urlMatch: ${urlMatch}`);
     // This should be safe as our regexes earlier prevent any weirdness
     try {
       if (!urlMatch.includes("facebook.com")) {
@@ -25,7 +49,8 @@ class InstagramClient {
         }
       }
       const url = urlMatch;
-      var shellCommand = `yt-dlp --cookies data/cookies.txt '${url.replace(/'/g, "'\\''")}' -j`;
+      // var shellCommand = `yt-dlp --cookies data/cookies.txt '${url.replace(/'/g, "'\\''")}' -j`;
+      var shellCommand = `yt-dlp '${url.replace(/'/g, "'\\''")}' -j`;
       if (urlMatch.includes("facebook.com")) {
         shellCommand = `yt-dlp '${url.replace(/'/g, "'\\''")}' -j`;
       }

@@ -16,6 +16,23 @@ const TWEET_ENDPOINT = (tweetID) =>
 
 // https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/twitter.py
 class TwitterGuestClient {
+  getSetting(options, match){
+    const dbOptions = options;
+    let mediaServiceObj = {};
+    if(dbOptions && dbOptions.serviceSettings){
+      mediaServiceObj = JSON.parse(dbOptions.serviceSettings)
+    }else{
+      mediaServiceObj = DEFAULT_MEDIA_SERVICES;
+    }
+    var urlMatch = match[0];
+    log.verbose("TwitterGuestClient(getSetting)", `Got urlMatch: ${urlMatch}`);
+    try{
+      return mediaServiceObj.twitter; // {tilted, external, off}
+    }catch(ignored){
+      log.error("TwitterGuestClient", ignored);
+    }
+    return;
+  }
   _fetchGuestToken() {
     return fetch(GUEST_TOKEN_ENDPOINT, {
       method: "post",
@@ -39,6 +56,7 @@ class TwitterGuestClient {
   // TODO: Renew client token when errors
   // eslint-disable-next-line no-unused-vars
   async getPost(match, options, isRetry = false) {
+    log.verbose("TwitterGuestClient", "getPost: match: " + match);
     const id = match[2];
     const twitfix = match[1];
     if (!options.flags.has(GuildFlags.Flags.PARSE_TWITFIX) && twitfix === "fx") return null;
