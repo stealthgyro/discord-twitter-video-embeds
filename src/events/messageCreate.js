@@ -143,9 +143,11 @@ module.exports = async function handleMessage(message) {
   log.verbose("messageCreate", "Resolved all posts:");
   log.verbose("messageCreate", posts);
   log.verbose("messageCreate", typeof posts);
+  log.verbose("messageCreate", "options");
+  log.verbose("messageCreate", options);
 
   // Check for links we cannot re-embed
-  if (posts.includes(null) || posts.find((post) => post.provider == 'INSTAGRAM')) {
+  if (options.mode != 'EXTERNAL' && (posts.includes(null) || posts.find((post) => post.provider == 'INSTAGRAM'))) {
     options.mode = SAFEST_EMBED_MODE;
     log.verbose("messageCreate", "Set mode to safest since message includes non-re-embedable content");
   }

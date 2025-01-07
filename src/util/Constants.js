@@ -52,7 +52,7 @@ module.exports.DEFAULT_MEDIA_SERVICES = {
   "twitter":'https://vxtwitter.com/'
 };
 
-module.exports.EmbedModes = createEnum([null, "VIDEO_REPLY", "RE_EMBED", "RE_COMPOSE"]);
+module.exports.EmbedModes = createEnum([null, "VIDEO_REPLY", "RE_EMBED", "RE_COMPOSE", "EXTERNAL"]);
 module.exports.SAFEST_EMBED_MODE = this.EmbedModes.VIDEO_REPLY;
 
 module.exports.QRT_UNROLL_BOTS = ["152172984373608449"];
